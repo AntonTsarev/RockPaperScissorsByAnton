@@ -9,6 +9,23 @@ player_score = 0
 computer_score = 0
 
 while rounds <= 5:
+    if rounds > 3:
+        if computer_score > player_score:
+            print(Fore.RED + "SORRY! You lost!")
+            print("Do you want to play another round?... Type YES to continue")
+            print()
+        elif player_score > computer_score:
+            print(Fore.GREEN + "You WON the GAME!")
+            print("Do you want to play another round?... Type YES to continue")
+            print()
+
+        decision_to_continue_the_game = input()
+        if decision_to_continue_the_game.upper() == "YES":
+            rounds = 0
+            continue
+        else:
+            print("Thank you! Have a nice day!")
+            exit()
 
     player_move = input("Choose [r]ock, [p]aper or [s]cissors: ")
 
@@ -38,22 +55,11 @@ while rounds <= 5:
             (player_move == scissors and computer_move == paper):
         print(Fore.GREEN + "You win!")
         player_score += 1
+        rounds += 1
     elif computer_move == player_move:
         print(Fore.YELLOW + "Draw!")
         continue
     else:
         print(Fore.RED + "You lose!")
         computer_score += 1
-    rounds += 1
-    if computer_score > player_score and rounds > 3:
-        print("Computer WON the game!")
-    elif player_score > computer_score and rounds > 3:
-        print("You WON the GAME!")
-        print("Do you want to play another round?... Type YES to continue")
-        decision_to_continue_the_game = input()
-        if decision_to_continue_the_game.upper() == "YES":
-            rounds = 0
-            continue
-        else:
-            print("Thank you! Have a nice day!")
-            exit()
+        rounds += 1
